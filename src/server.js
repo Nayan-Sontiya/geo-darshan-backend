@@ -36,6 +36,16 @@ app.use("/api/tutorials", tutorialRoutes); // Add tutorial routes
 const galleryRoutes = require("./routes/galleryRoutes");
 app.use("/api/gallery", galleryRoutes); // Use gallery routes
 
+const contactRoutes = require("./routes/contactRoutes");
+const {
+  getVisitorCount,
+  updateVisitorCount,
+} = require("./controllers/blogController");
+app.use("/api/contacts", contactRoutes); // Use gallery routes
+
+app.get("/api/visitors", getVisitorCount);
+app.put("/api/visitors", updateVisitorCount);
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
